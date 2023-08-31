@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>421711802858-7v584ohlhl9fmnmdlf349tdd1s60as3d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.421711802858-7v584ohlhl9fmnmdlf349tdd1s60as3d</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>421711802858-5csuv4jk5cb4749rurc9are0qm62s802.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAJ-U0T2wAj8sx3_x-Mj7Foyk5cnlzqIdQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>421711802858</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.lungtiapp.food</string>
+	<key>PROJECT_ID</key>
+	<string>lungti-food</string>
+	<key>STORAGE_BUCKET</key>
+	<string>lungti-food.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:421711802858:ios:f035df66337a8ea9100293</string>
+</dict>
+</plist>
