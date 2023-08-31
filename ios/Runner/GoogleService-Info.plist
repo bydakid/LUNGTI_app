@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>421711802858-7v584ohlhl9fmnmdlf349tdd1s60as3d.apps.googleusercontent.com</string>
+	<string>421711802858-sdcimv9ip07qk4iu3g8i5lq3rnijve0e.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.421711802858-7v584ohlhl9fmnmdlf349tdd1s60as3d</string>
+	<string>com.googleusercontent.apps.421711802858-sdcimv9ip07qk4iu3g8i5lq3rnijve0e</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>421711802858-5csuv4jk5cb4749rurc9are0qm62s802.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.lungtiapp.food</string>
+	<string>com.lungtiapp1.food</string>
 	<key>PROJECT_ID</key>
 	<string>lungti-food</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:421711802858:ios:f035df66337a8ea9100293</string>
+	<string>1:421711802858:ios:d6dfafceda4a9791100293</string>
 </dict>
 </plist>

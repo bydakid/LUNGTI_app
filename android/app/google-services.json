@@ -103,6 +103,50 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:421711802858:android:eb5526a08fd1abdc100293",
+        "android_client_info": {
+          "package_name": "com.lungtiapp1.food"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421711802858-i3mag45g44ddu9i0hj26cu16up4gm8k4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lungtiapp1.food",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "421711802858-56d43dgp69vtrk8nts00opn2mu085g3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFysFw62gRjkJ6VvjxDDklsfsxyHU6uxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421711802858-56d43dgp69vtrk8nts00opn2mu085g3v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "421711802858-2fhkn6fhf5idc3efuu5kvipfd570b9dp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lungti.food"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:421711802858:android:586228e6e0cd9670100293",
         "android_client_info": {
           "package_name": "com.lungtibizz.food"
