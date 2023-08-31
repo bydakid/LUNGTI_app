@@ -1,4 +1,4 @@
-package com.lungtiapp1.food
+package com.lungtiapp.food
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 
