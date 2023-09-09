@@ -331,7 +331,7 @@ class _SearchTabWidgetState extends State<SearchTabWidget> {
                                             );
                                           },
                                           child: Container(
-                                            height: 165.0,
+                                            height: 175.0,
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -953,7 +953,7 @@ class _SearchTabWidgetState extends State<SearchTabWidget> {
                                                   20.0, 10.0, 20.0, 10.0),
                                           child: Container(
                                             width: double.infinity,
-                                            height: 165.0,
+                                            height: 175.0,
                                             decoration: BoxDecoration(
                                               color: Color(0x9802200C),
                                               borderRadius:

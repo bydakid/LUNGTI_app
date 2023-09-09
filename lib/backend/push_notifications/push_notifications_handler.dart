@@ -135,6 +135,7 @@ final parametersBuilderMap =
   'Forgot_password': ParameterData.none(),
   'order_collected': ParameterData.none(),
   'Payment': ParameterData.none(),
+  'Login_mail': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

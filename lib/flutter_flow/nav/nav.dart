@@ -194,6 +194,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/payment',
           requireAuth: true,
           builder: (context, params) => PaymentWidget(),
+        ),
+        FFRoute(
+          name: 'Login_mail',
+          path: '/loginMail',
+          builder: (context, params) => LoginMailWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -9,8 +8,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,26 +27,11 @@ class MapWidget extends StatefulWidget {
   _MapWidgetState createState() => _MapWidgetState();
 }
 
-class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
+class _MapWidgetState extends State<MapWidget> {
   late MapModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
   LatLng? currentUserLocationValue;
-
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 1000.ms,
-          begin: Offset(0.0, 200.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
 
   @override
   void initState() {
@@ -87,110 +69,106 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
       );
     }
 
-    return StreamBuilder<List<StoreRecord>>(
-      stream: queryStoreRecord(),
-      builder: (context, snapshot) {
-        // Customize what your widget looks like when it's loading.
-        if (!snapshot.hasData) {
-          return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Center(
-              child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: SpinKitRipple(
-                  color: FlutterFlowTheme.of(context).secondary,
-                  size: 50.0,
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
+      child: Scaffold(
+        key: scaffoldKey,
+        resizeToAvoidBottomInset: false,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: Stack(
+          children: [
+            StreamBuilder<List<StoreRecord>>(
+              stream: queryStoreRecord(
+                queryBuilder: (storeRecord) =>
+                    storeRecord.where('bag.active', isEqualTo: true),
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50.0,
+                      height: 50.0,
+                      child: SpinKitRipple(
+                        color: FlutterFlowTheme.of(context).secondary,
+                        size: 50.0,
+                      ),
+                    ),
+                  );
+                }
+                List<StoreRecord> googleMapStoreRecordList = snapshot.data!;
+                return FlutterFlowGoogleMap(
+                  controller: _model.googleMapsController,
+                  onCameraIdle: (latLng) =>
+                      setState(() => _model.googleMapsCenter = latLng),
+                  initialLocation: _model.googleMapsCenter ??=
+                      currentUserLocationValue!,
+                  markers: googleMapStoreRecordList
+                      .map(
+                        (googleMapStoreRecord) => FlutterFlowMarker(
+                          googleMapStoreRecord.reference.path,
+                          googleMapStoreRecord.latLng!,
+                        ),
+                      )
+                      .toList(),
+                  markerColor: GoogleMarkerColor.green,
+                  mapType: MapType.normal,
+                  style: GoogleMapStyle.retro,
+                  initialZoom: 13.0,
+                  allowInteraction: true,
+                  allowZoom: true,
+                  showZoomControls: false,
+                  showLocation: true,
+                  showCompass: false,
+                  showMapToolbar: false,
+                  showTraffic: false,
+                  centerMapOnMarkerTap: true,
+                );
+              },
+            ),
+            Align(
+              alignment: AlignmentDirectional(-1.00, -1.00),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 60.0, 0.0, 0.0),
+                child: FlutterFlowIconButton(
+                  borderRadius: 20.0,
+                  buttonSize: 40.0,
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  icon: Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    color: FlutterFlowTheme.of(context).secondary,
+                    size: 20.0,
+                  ),
+                  onPressed: () async {
+                    logFirebaseEvent(
+                        'MAP_arrow_back_ios_new_rounded_ICN_ON_TA');
+                    logFirebaseEvent('IconButton_navigate_to');
+
+                    context.pushNamed('home');
+                  },
                 ),
               ),
             ),
-          );
-        }
-        List<StoreRecord> mapStoreRecordList = snapshot.data!;
-        return GestureDetector(
-          onTap: () => FocusScope.of(context).requestFocus(_model.unfocusNode),
-          child: Scaffold(
-            key: scaffoldKey,
-            resizeToAvoidBottomInset: false,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Stack(
-              children: [
-                StreamBuilder<List<StoreRecord>>(
-                  stream: queryStoreRecord(
-                    queryBuilder: (storeRecord) =>
-                        storeRecord.where('bag.active', isEqualTo: true),
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: SpinKitRipple(
-                            color: FlutterFlowTheme.of(context).secondary,
-                            size: 50.0,
-                          ),
+            Align(
+              alignment: AlignmentDirectional(0.00, 1.00),
+              child: StreamBuilder<List<StoreRecord>>(
+                stream: queryStoreRecord(),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: SpinKitRipple(
+                          color: FlutterFlowTheme.of(context).secondary,
+                          size: 50.0,
                         ),
-                      );
-                    }
-                    List<StoreRecord> googleMapStoreRecordList = snapshot.data!;
-                    return FlutterFlowGoogleMap(
-                      controller: _model.googleMapsController,
-                      onCameraIdle: (latLng) =>
-                          setState(() => _model.googleMapsCenter = latLng),
-                      initialLocation: _model.googleMapsCenter ??=
-                          currentUserLocationValue!,
-                      markers: googleMapStoreRecordList
-                          .map(
-                            (googleMapStoreRecord) => FlutterFlowMarker(
-                              googleMapStoreRecord.reference.path,
-                              googleMapStoreRecord.latLng!,
-                            ),
-                          )
-                          .toList(),
-                      markerColor: GoogleMarkerColor.green,
-                      mapType: MapType.normal,
-                      style: GoogleMapStyle.retro,
-                      initialZoom: 13.0,
-                      allowInteraction: true,
-                      allowZoom: true,
-                      showZoomControls: false,
-                      showLocation: true,
-                      showCompass: false,
-                      showMapToolbar: false,
-                      showTraffic: false,
-                      centerMapOnMarkerTap: true,
-                    );
-                  },
-                ),
-                Align(
-                  alignment: AlignmentDirectional(-1.00, -1.00),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 60.0, 0.0, 0.0),
-                    child: FlutterFlowIconButton(
-                      borderRadius: 20.0,
-                      buttonSize: 40.0,
-                      fillColor: FlutterFlowTheme.of(context).accent4,
-                      icon: Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        color: FlutterFlowTheme.of(context).secondary,
-                        size: 20.0,
                       ),
-                      onPressed: () async {
-                        logFirebaseEvent(
-                            'MAP_arrow_back_ios_new_rounded_ICN_ON_TA');
-                        logFirebaseEvent('IconButton_navigate_to');
-
-                        context.pushNamed('home');
-                      },
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
-                  child: Material(
+                    );
+                  }
+                  List<StoreRecord> containerStoreRecordList = snapshot.data!;
+                  return Material(
                     color: Colors.transparent,
                     elevation: 10.0,
                     shape: RoundedRectangleBorder(
@@ -219,7 +197,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            mainAxisSize: MainAxisSize.max,
+                            mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Flexible(
@@ -227,7 +205,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                                   builder: (context) {
                                     final distance = functions
                                         .getPlacesMaximumDistanceCopy(
-                                            mapStoreRecordList.toList(),
+                                            containerStoreRecordList.toList(),
                                             _model.googleMapsCenter!,
                                             5.0)
                                         .toList();
@@ -295,7 +273,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                                                                 context)
                                                             .width *
                                                         0.75,
-                                                    height: 165.0,
+                                                    height: 175.0,
                                                     decoration: BoxDecoration(
                                                       color: FlutterFlowTheme
                                                               .of(context)
@@ -809,7 +787,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                                                                 context)
                                                             .width *
                                                         0.75,
-                                                    height: 165.0,
+                                                    height: 175.0,
                                                     decoration: BoxDecoration(
                                                       color: Color(0x9A02200C),
                                                       borderRadius:
@@ -867,7 +845,7 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                                     10.0, 20.0, 10.0, 20.0),
                                 child: Container(
                                   width: MediaQuery.sizeOf(context).width * 0.6,
-                                  height: 165.0,
+                                  height: 175.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
@@ -909,14 +887,13 @@ class _MapWidgetState extends State<MapWidget> with TickerProviderStateMixin {
                         ),
                       ),
                     ),
-                  ).animateOnPageLoad(
-                      animationsMap['containerOnPageLoadAnimation']!),
-                ),
-              ],
+                  );
+                },
+              ),
             ),
-          ),
-        );
-      },
+          ],
+        ),
+      ),
     );
   }
 }

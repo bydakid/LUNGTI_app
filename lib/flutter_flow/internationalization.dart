@@ -458,6 +458,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'tl': 'Mag-sign gamit ang Google',
       'zh_Hans': '与谷歌签约',
     },
+    'f7b9v2li': {
+      'en': 'Other',
+      'ms': 'Tandatangan dengan Google',
+      'tl': 'Mag-sign gamit ang Google',
+      'zh_Hans': '与谷歌签约',
+    },
     '089cpxy7': {
       'en': 'Home',
       'ms': 'Rumah',
@@ -1123,6 +1129,57 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'zxu0k217': {
       'en': '',
+      'ms': 'Rumah',
+      'tl': 'Bahay',
+      'zh_Hans': '家',
+    },
+  },
+  // Login_mail
+  {
+    'snlelfck': {
+      'en': 'Let\'s get started',
+      'ms': 'Mari kita mulakan',
+      'tl': 'Magsimula na tayo',
+      'zh_Hans': '让我们开始吧',
+    },
+    'pvu4iewc': {
+      'en': 'Username',
+      'ms': 'Negara',
+      'tl': 'Bansa',
+      'zh_Hans': '国家',
+    },
+    '8fu8874z': {
+      'en': '',
+      'ms': 'E-mel',
+      'tl': 'Email',
+      'zh_Hans': '电子邮件',
+    },
+    '22plvxcj': {
+      'en': '',
+      'ms': '',
+      'tl': '',
+      'zh_Hans': '',
+    },
+    'dnbkfr9h': {
+      'en': '',
+      'ms': 'E-mel',
+      'tl': 'Email',
+      'zh_Hans': '电子邮件',
+    },
+    'n3idoc2q': {
+      'en': '',
+      'ms': '',
+      'tl': '',
+      'zh_Hans': '',
+    },
+    'nqzfv84y': {
+      'en': 'Continue',
+      'ms': 'teruskan',
+      'tl': 'Magpatuloy',
+      'zh_Hans': '继续',
+    },
+    'd4wd80qk': {
+      'en': 'Home',
       'ms': 'Rumah',
       'tl': 'Bahay',
       'zh_Hans': '家',

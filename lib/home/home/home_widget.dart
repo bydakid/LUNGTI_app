@@ -73,19 +73,6 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
     _model = createModel(context, () => HomeModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'home'});
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('HOME_PAGE_home_ON_INIT_STATE');
-      if (valueOrDefault(currentUserDocument?.country, '') == null ||
-          valueOrDefault(currentUserDocument?.country, '') == '') {
-        logFirebaseEvent('home_navigate_to');
-
-        context.pushNamed('Login_Country');
-      } else {
-        return;
-      }
-    });
-
     getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
   }
@@ -275,7 +262,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                               );
                                             },
                                             child: Container(
-                                              height: 165.0,
+                                              height: 175.0,
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
@@ -459,179 +446,189 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                       ),
                                                     ),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(10.0, 0.0,
-                                                                10.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .end,
-                                                      children: [
-                                                        Flexible(
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child: Text(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    distanceItem
-                                                                        .bag
-                                                                        .name,
-                                                                    'Mystery Bag',
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Open Sans',
-                                                                        fontWeight:
-                                                                            FontWeight.w600,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0,
-                                                                            5.0),
-                                                                child: RichText(
-                                                                  textScaleFactor:
-                                                                      MediaQuery.of(
-                                                                              context)
-                                                                          .textScaleFactor,
-                                                                  text:
-                                                                      TextSpan(
-                                                                    children: [
-                                                                      TextSpan(
-                                                                        text: FFLocalizations.of(context)
-                                                                            .getText(
-                                                                          'xfc3w343' /* Collect today at  */,
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodySmall,
-                                                                      ),
-                                                                      TextSpan(
-                                                                        text: valueOrDefault<
-                                                                            String>(
-                                                                          dateTimeFormat(
-                                                                            'Hm',
-                                                                            distanceItem.bag.timeStart,
-                                                                            locale:
-                                                                                FFLocalizations.of(context).languageCode,
-                                                                          ),
-                                                                          '00:00',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodySmall,
-                                                                      ),
-                                                                      TextSpan(
-                                                                        text: FFLocalizations.of(context)
-                                                                            .getText(
-                                                                          'w9z3j1or' /*  -  */,
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodySmall,
-                                                                      ),
-                                                                      TextSpan(
-                                                                        text: valueOrDefault<
-                                                                            String>(
-                                                                          dateTimeFormat(
-                                                                            'Hm',
-                                                                            distanceItem.bag.timeEnd,
-                                                                            locale:
-                                                                                FFLocalizations.of(context).languageCode,
-                                                                          ),
-                                                                          '00:00',
-                                                                        ),
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodySmall,
-                                                                      )
-                                                                    ],
+                                                  Flexible(
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          Flexible(
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      distanceItem
+                                                                          .bag
+                                                                          .name,
+                                                                      'Mystery Bag',
+                                                                    ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodySmall,
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                        ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .min,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Icon(
-                                                                    Icons
-                                                                        .star_rounded,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                    size: 16.0,
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            5.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child: Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        'zk1pyx2f' /* Not yet */,
-                                                                      ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0),
+                                                                  child:
+                                                                      RichText(
+                                                                    textScaleFactor:
+                                                                        MediaQuery.of(context)
+                                                                            .textScaleFactor,
+                                                                    text:
+                                                                        TextSpan(
+                                                                      children: [
+                                                                        TextSpan(
+                                                                          text:
+                                                                              FFLocalizations.of(context).getText(
+                                                                            'xfc3w343' /* Collect today at  */,
+                                                                          ),
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodySmall,
+                                                                        ),
+                                                                        TextSpan(
+                                                                          text:
+                                                                              valueOrDefault<String>(
+                                                                            dateTimeFormat(
+                                                                              'Hm',
+                                                                              distanceItem.bag.timeStart,
+                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                            ),
+                                                                            '00:00',
+                                                                          ),
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodySmall,
+                                                                        ),
+                                                                        TextSpan(
+                                                                          text:
+                                                                              FFLocalizations.of(context).getText(
+                                                                            'w9z3j1or' /*  -  */,
+                                                                          ),
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodySmall,
+                                                                        ),
+                                                                        TextSpan(
+                                                                          text:
+                                                                              valueOrDefault<String>(
+                                                                            dateTimeFormat(
+                                                                              'Hm',
+                                                                              distanceItem.bag.timeEnd,
+                                                                              locale: FFLocalizations.of(context).languageCode,
+                                                                            ),
+                                                                            '00:00',
+                                                                          ),
+                                                                          style:
+                                                                              FlutterFlowTheme.of(context).bodySmall,
+                                                                        )
+                                                                      ],
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodySmall,
                                                                     ),
                                                                   ),
-                                                                  SizedBox(
-                                                                    height:
-                                                                        15.0,
-                                                                    child:
-                                                                        VerticalDivider(
-                                                                      thickness:
-                                                                          1.0,
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    Icon(
+                                                                      Icons
+                                                                          .star_rounded,
                                                                       color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primaryText,
+                                                                      size:
+                                                                          16.0,
                                                                     ),
-                                                                  ),
-                                                                  Flexible(
-                                                                    child: Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        functions
-                                                                            .returnDistanceBetweenTwoPointsCopy(currentUserLocationValue,
-                                                                                distanceItem.latLng)
-                                                                            .toString(),
-                                                                        '0',
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                      child:
+                                                                          Text(
+                                                                        FFLocalizations.of(context)
+                                                                            .getText(
+                                                                          'zk1pyx2f' /* Not yet */,
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodySmall,
+                                                                      ),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      height:
+                                                                          15.0,
+                                                                      child:
+                                                                          VerticalDivider(
+                                                                        thickness:
+                                                                            1.0,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                      ),
+                                                                    ),
+                                                                    Flexible(
+                                                                      child:
+                                                                          Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          functions
+                                                                              .returnDistanceBetweenTwoPointsCopy(currentUserLocationValue, distanceItem.latLng)
+                                                                              .toString(),
+                                                                          '0',
+                                                                        ),
+                                                                        maxLines:
+                                                                            1,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodySmall,
+                                                                      ),
+                                                                    ),
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        'ryh6eawk' /*  m */,
                                                                       ),
                                                                       maxLines:
                                                                           1,
@@ -639,233 +636,218 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                               context)
                                                                           .bodySmall,
                                                                     ),
-                                                                  ),
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .end,
+                                                            children: [
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .end,
+                                                                children: [
                                                                   Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'ryh6eawk' /*  m */,
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      formatNumber(
+                                                                        functions
+                                                                            .finalValue(valueOrDefault<double>(
+                                                                          distanceItem
+                                                                              .bag
+                                                                              .priceInt
+                                                                              .toDouble(),
+                                                                          0.0,
+                                                                        )),
+                                                                        formatType:
+                                                                            FormatType.decimal,
+                                                                        decimalType:
+                                                                            DecimalType.automatic,
+                                                                      ),
+                                                                      '0',
                                                                     ),
-                                                                    maxLines: 1,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodySmall,
+                                                                        .labelSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          decoration:
+                                                                              TextDecoration.lineThrough,
+                                                                        ),
                                                                   ),
+                                                                  if (distanceItem
+                                                                          .country ==
+                                                                      'Philippines')
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        'enkjftpx' /*  PHP */,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmall
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Open Sans',
+                                                                            decoration:
+                                                                                TextDecoration.lineThrough,
+                                                                          ),
+                                                                    ),
+                                                                  if (distanceItem
+                                                                          .country ==
+                                                                      'Singapore')
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        '3sim7dwc' /*  S$ */,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmall
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Open Sans',
+                                                                            decoration:
+                                                                                TextDecoration.lineThrough,
+                                                                          ),
+                                                                    ),
+                                                                  if (distanceItem
+                                                                          .country ==
+                                                                      'Malaysia')
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        '7es1m6vh' /*  RM */,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelSmall
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Open Sans',
+                                                                            decoration:
+                                                                                TextDecoration.lineThrough,
+                                                                          ),
+                                                                    ),
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .end,
+                                                                children: [
+                                                                  Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      formatNumber(
+                                                                        distanceItem
+                                                                            .bag
+                                                                            .priceInt,
+                                                                        formatType:
+                                                                            FormatType.decimal,
+                                                                        decimalType:
+                                                                            DecimalType.automatic,
+                                                                      ),
+                                                                      '0',
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Open Sans',
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondary,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                        ),
+                                                                  ),
+                                                                  if (distanceItem
+                                                                          .country ==
+                                                                      'Philippines')
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        'ozth0yq0' /*  PHP */,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Open Sans',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondary,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                          ),
+                                                                    ),
+                                                                  if (distanceItem
+                                                                          .country ==
+                                                                      'Singapore')
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        'ccugrrqx' /*  S$ */,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Open Sans',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondary,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                          ),
+                                                                    ),
+                                                                  if (distanceItem
+                                                                          .country ==
+                                                                      'Malaysia')
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        'mhlivu51' /*  RM */,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Open Sans',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondary,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                          ),
+                                                                    ),
                                                                 ],
                                                               ),
                                                             ],
                                                           ),
-                                                        ),
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .end,
-                                                          children: [
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .end,
-                                                              children: [
-                                                                Text(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    formatNumber(
-                                                                      functions.finalValue(
-                                                                          valueOrDefault<
-                                                                              double>(
-                                                                        distanceItem
-                                                                            .bag
-                                                                            .priceInt
-                                                                            .toDouble(),
-                                                                        0.0,
-                                                                      )),
-                                                                      formatType:
-                                                                          FormatType
-                                                                              .decimal,
-                                                                      decimalType:
-                                                                          DecimalType
-                                                                              .automatic,
-                                                                    ),
-                                                                    '0',
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Open Sans',
-                                                                        decoration:
-                                                                            TextDecoration.lineThrough,
-                                                                      ),
-                                                                ),
-                                                                if (distanceItem
-                                                                        .country ==
-                                                                    'Philippines')
-                                                                  Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'enkjftpx' /*  PHP */,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Open Sans',
-                                                                          decoration:
-                                                                              TextDecoration.lineThrough,
-                                                                        ),
-                                                                  ),
-                                                                if (distanceItem
-                                                                        .country ==
-                                                                    'Singapore')
-                                                                  Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      '3sim7dwc' /*  S$ */,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Open Sans',
-                                                                          decoration:
-                                                                              TextDecoration.lineThrough,
-                                                                        ),
-                                                                  ),
-                                                                if (distanceItem
-                                                                        .country ==
-                                                                    'Malaysia')
-                                                                  Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      '7es1m6vh' /*  RM */,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Open Sans',
-                                                                          decoration:
-                                                                              TextDecoration.lineThrough,
-                                                                        ),
-                                                                  ),
-                                                              ],
-                                                            ),
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .end,
-                                                              children: [
-                                                                Text(
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                    formatNumber(
-                                                                      distanceItem
-                                                                          .bag
-                                                                          .priceInt,
-                                                                      formatType:
-                                                                          FormatType
-                                                                              .decimal,
-                                                                      decimalType:
-                                                                          DecimalType
-                                                                              .automatic,
-                                                                    ),
-                                                                    '0',
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Open Sans',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondary,
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                      ),
-                                                                ),
-                                                                if (distanceItem
-                                                                        .country ==
-                                                                    'Philippines')
-                                                                  Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'ozth0yq0' /*  PHP */,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Open Sans',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondary,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                        ),
-                                                                  ),
-                                                                if (distanceItem
-                                                                        .country ==
-                                                                    'Singapore')
-                                                                  Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'ccugrrqx' /*  S$ */,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Open Sans',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondary,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                        ),
-                                                                  ),
-                                                                if (distanceItem
-                                                                        .country ==
-                                                                    'Malaysia')
-                                                                  Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'mhlivu51' /*  RM */,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Open Sans',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondary,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                        ),
-                                                                  ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
@@ -885,7 +867,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                     20.0, 10.0, 20.0, 10.0),
                                             child: Container(
                                               width: double.infinity,
-                                              height: 165.0,
+                                              height: 175.0,
                                               decoration: BoxDecoration(
                                                 color: Color(0x9802200C),
                                                 borderRadius:
