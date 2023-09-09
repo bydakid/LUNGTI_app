@@ -363,7 +363,7 @@
     },
     {
       "name": "flutter_stripe",
-      "rootUri": "file:///Users/hubertsimonbom/.pub-cache/hosted/pub.dev/flutter_stripe-9.2.1",
+      "rootUri": "file:///Users/hubertsimonbom/.pub-cache/hosted/pub.dev/flutter_stripe-9.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -885,13 +885,13 @@
     },
     {
       "name": "stripe_android",
-      "rootUri": "file:///Users/hubertsimonbom/.pub-cache/hosted/pub.dev/stripe_android-9.2.1",
+      "rootUri": "file:///Users/hubertsimonbom/.pub-cache/hosted/pub.dev/stripe_android-9.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "stripe_ios",
-      "rootUri": "file:///Users/hubertsimonbom/.pub-cache/hosted/pub.dev/stripe_ios-9.2.1",
+      "rootUri": "file:///Users/hubertsimonbom/.pub-cache/hosted/pub.dev/stripe_ios-9.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -903,7 +903,7 @@
     },
     {
       "name": "stripe_platform_interface",
-      "rootUri": "file:///Users/hubertsimonbom/.pub-cache/hosted/pub.dev/stripe_platform_interface-9.2.1",
+      "rootUri": "file:///Users/hubertsimonbom/.pub-cache/hosted/pub.dev/stripe_platform_interface-9.3.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -1040,7 +1040,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-09-09T22:31:29.695265Z",
+  "generated": "2023-09-09T22:33:47.092154Z",
   "generator": "pub",
   "generatorVersion": "3.1.0"
 }
