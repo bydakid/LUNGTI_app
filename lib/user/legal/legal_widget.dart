@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,7 +26,6 @@ class _LegalWidgetState extends State<LegalWidget> {
     _model = createModel(context, () => LegalModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Legal'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -90,74 +90,124 @@ class _LegalWidgetState extends State<LegalWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 10.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    logFirebaseEvent('LEGAL_PAGE_Row_kxduqthe_ON_TAP');
-                    logFirebaseEvent('Row_launch_u_r_l');
-                    await launchURL('https://lungti.com/privacypolicy.html');
+                    logFirebaseEvent('LEGAL_PAGE_Container_tg4q6rqx_ON_TAP');
+                    logFirebaseEvent('Container_launch_u_r_l');
+                    await launchURL('https://www.lungti.com/privacy-policy');
                   },
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'oq9m3mfd' /* Privacy Policy */,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyLarge,
+                  child: Material(
+                    color: Colors.transparent,
+                    elevation: 2.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Container(
+                      height: 50.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
-                      Flexible(
-                        child: Align(
-                          alignment: AlignmentDirectional(1.0, 0.0),
-                          child: Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 15.0,
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            20.0, 0.0, 20.0, 0.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent('LEGAL_PAGE_Row_kxduqthe_ON_TAP');
+                            logFirebaseEvent('Row_launch_u_r_l');
+                            await launchURL(
+                                'https://lungti.com/privacypolicy.html');
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'oq9m3mfd' /* Privacy Policy */,
+                                ),
+                                style: FlutterFlowTheme.of(context).bodyLarge,
+                              ),
+                              Flexible(
+                                child: Align(
+                                  alignment: AlignmentDirectional(1.00, 0.00),
+                                  child: Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 15.0,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    logFirebaseEvent('LEGAL_PAGE_Row_taflu9ji_ON_TAP');
-                    logFirebaseEvent('Row_launch_u_r_l');
-                    await launchURL('https://lungti.com/termsconditions.html');
+                    logFirebaseEvent('LEGAL_PAGE_Container_5v9m4k2d_ON_TAP');
+                    logFirebaseEvent('Container_launch_u_r_l');
+                    await launchURL('https://www.lungti.com/terms-of-service');
                   },
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          '3m0rnnm1' /* Terms and Conditions */,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyLarge,
+                  child: Material(
+                    color: Colors.transparent,
+                    elevation: 2.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Container(
+                      height: 50.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
-                      Flexible(
-                        child: Align(
-                          alignment: AlignmentDirectional(1.0, 0.0),
-                          child: Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 15.0,
-                          ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            20.0, 0.0, 20.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'uudyinjd' /* Terms and Conditions */,
+                              ),
+                              style: FlutterFlowTheme.of(context).bodyLarge,
+                            ),
+                            Flexible(
+                              child: Align(
+                                alignment: AlignmentDirectional(1.00, 0.00),
+                                child: Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 15.0,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),

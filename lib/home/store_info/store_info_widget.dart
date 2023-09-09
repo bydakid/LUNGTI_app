@@ -37,7 +37,6 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
     _model = createModel(context, () => StoreInfoModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'store_info'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -69,7 +68,7 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
                   ),
                   Container(
                     width: double.infinity,
-                    height: 110.0,
+                    height: 100.0,
                     decoration: BoxDecoration(),
                   ),
                   InkWell(
@@ -87,10 +86,11 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
                     },
                     child: Container(
                       width: double.infinity,
+                      height: 50.0,
                       decoration: BoxDecoration(),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 10.0, 20.0, 10.0),
+                            20.0, 0.0, 20.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -118,6 +118,7 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
                                           widget.storeRef?.location?.address,
                                           'Location',
                                         ),
+                                        maxLines: 2,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -127,7 +128,7 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(1.0, 0.0),
+                              alignment: AlignmentDirectional(1.00, 0.00),
                               child: Icon(
                                 Icons.arrow_forward_ios_rounded,
                                 color: FlutterFlowTheme.of(context).primaryText,
@@ -277,7 +278,7 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
                   ),
                   Container(
                     width: double.infinity,
-                    height: MediaQuery.sizeOf(context).height * 0.1,
+                    height: MediaQuery.sizeOf(context).height * 0.15,
                     decoration: BoxDecoration(),
                   ),
                 ],
@@ -318,7 +319,7 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(1.0, -1.0),
+                                  alignment: AlignmentDirectional(1.00, -1.00),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -378,6 +379,8 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 0.0, 0.0),
                                       child: RichText(
+                                        textScaleFactor: MediaQuery.of(context)
+                                            .textScaleFactor,
                                         text: TextSpan(
                                           children: [
                                             TextSpan(
@@ -428,6 +431,13 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).primaryBackground,
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 1.0,
+                        color: Color(0x33000000),
+                        offset: Offset(0.0, 2.0),
+                      )
+                    ],
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -478,6 +488,8 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
                               ),
                             ),
                             RichText(
+                              textScaleFactor:
+                                  MediaQuery.of(context).textScaleFactor,
                               text: TextSpan(
                                 children: [
                                   TextSpan(
@@ -517,180 +529,167 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
                           ],
                         ),
                       ),
-                      if (widget.storeRef?.country == 'Singapore')
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Flexible(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 5.0, 0.0),
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      '${functions.centStripe(widget.storeRef!.bag.priceInt.toDouble()).toString()} S\$',
-                                      'S\$',
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            20.0, 0.0, 20.0, 10.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  valueOrDefault<String>(
+                                    formatNumber(
+                                      widget.storeRef?.bag?.priceInt,
+                                      formatType: FormatType.decimal,
+                                      decimalType: DecimalType.automatic,
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily: 'Open Sans',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                    '0',
                                   ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .override(
+                                        fontFamily: 'Open Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
-                              ),
-                              Flexible(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 5.0, 0.0),
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      '${valueOrDefault<String>(
-                                        functions
-                                            .centStripe(functions.finalValue(
-                                                widget.storeRef!.bag.priceInt
-                                                    .toDouble()))
-                                            .toString(),
-                                        '0',
-                                      )} S\$',
-                                      'S\$',
+                                if (widget.storeRef?.country == 'Philippines')
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 5.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'a3t4jcqk' /*  PHP */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            fontFamily: 'Open Sans',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelSmall
-                                        .override(
-                                          fontFamily: 'Open Sans',
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                        ),
                                   ),
+                                if (widget.storeRef?.country == 'Malaysia')
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 5.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        '7c03jp07' /*  RM */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            fontFamily: 'Open Sans',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ),
+                                if (widget.storeRef?.country == 'Singapore')
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 5.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        '6wc6nhb2' /*  S$ */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            fontFamily: 'Open Sans',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  valueOrDefault<String>(
+                                    formatNumber(
+                                      functions.finalValue(widget
+                                          .storeRef!.bag.priceInt
+                                          .toDouble()),
+                                      formatType: FormatType.decimal,
+                                      decimalType: DecimalType.automatic,
+                                    ),
+                                    '0',
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelSmall
+                                      .override(
+                                        fontFamily: 'Open Sans',
+                                        decoration: TextDecoration.lineThrough,
+                                      ),
                                 ),
-                              ),
-                            ],
-                          ),
+                                if (widget.storeRef?.country == 'Philippines')
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 5.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'evc3h5zl' /* PHP */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelSmall
+                                          .override(
+                                            fontFamily: 'Open Sans',
+                                            decoration:
+                                                TextDecoration.lineThrough,
+                                          ),
+                                    ),
+                                  ),
+                                if (widget.storeRef?.country == 'Malaysia')
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 5.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        '5m9flmh3' /*  RM */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelSmall
+                                          .override(
+                                            fontFamily: 'Open Sans',
+                                            decoration:
+                                                TextDecoration.lineThrough,
+                                          ),
+                                    ),
+                                  ),
+                                if (widget.storeRef?.country == 'Singapore')
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 5.0, 0.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'i3f5xgfa' /*  S$ */,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelSmall
+                                          .override(
+                                            fontFamily: 'Open Sans',
+                                            decoration:
+                                                TextDecoration.lineThrough,
+                                          ),
+                                    ),
+                                  ),
+                              ],
+                            ),
+                          ],
                         ),
-                      if (widget.storeRef?.country == 'Malaysia')
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Flexible(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 5.0, 0.0),
-                                  child: Text(
-                                    '${functions.centStripe(widget.storeRef!.bag.priceInt.toDouble()).toString()} RM',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily: 'Open Sans',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                              Flexible(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 5.0, 0.0),
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      '${valueOrDefault<String>(
-                                        functions
-                                            .centStripe(functions.finalValue(
-                                                widget.storeRef!.bag.priceInt
-                                                    .toDouble()))
-                                            .toString(),
-                                        '0',
-                                      )} RM',
-                                      '0 RM',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelSmall
-                                        .override(
-                                          fontFamily: 'Open Sans',
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      if (widget.storeRef?.country == 'Philippines')
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 10.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Flexible(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 5.0, 0.0),
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      '${functions.centStripe(widget.storeRef!.bag.priceInt.toDouble()).toString()} PHP',
-                                      'PHP',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily: 'Open Sans',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                              Flexible(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 5.0, 0.0),
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      '${valueOrDefault<String>(
-                                        functions
-                                            .centStripe(functions.finalValue(
-                                                widget.storeRef!.bag.priceInt
-                                                    .toDouble()))
-                                            .toString(),
-                                        '0',
-                                      )} PHP',
-                                      '0 PHP',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelSmall
-                                        .override(
-                                          fontFamily: 'Open Sans',
-                                          decoration:
-                                              TextDecoration.lineThrough,
-                                        ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      Divider(
-                        thickness: 1.0,
-                        color: FlutterFlowTheme.of(context).secondaryText,
                       ),
                     ],
                   ),
@@ -698,79 +697,94 @@ class _StoreInfoWidgetState extends State<StoreInfoWidget> {
               ],
             ),
             Align(
-              alignment: AlignmentDirectional(0.0, 1.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(0.0),
-                  bottomRight: Radius.circular(0.0),
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0),
-                ),
-                child: Container(
-                  width: double.infinity,
-                  height: MediaQuery.sizeOf(context).height * 0.1,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(0.0),
-                      bottomRight: Radius.circular(0.0),
-                      topLeft: Radius.circular(20.0),
-                      topRight: Radius.circular(20.0),
-                    ),
+              alignment: AlignmentDirectional(0.00, 1.00),
+              child: Material(
+                color: Colors.transparent,
+                elevation: 4.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(0.0),
+                    bottomRight: Radius.circular(0.0),
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0),
                   ),
-                  child: Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
-                    child: FFButtonWidget(
-                      onPressed: widget.storeRef?.bag?.amount == 0
-                          ? null
-                          : () async {
-                              logFirebaseEvent(
-                                  'STORE_INFO_PAGE_RESERVE_BTN_ON_TAP');
-                              logFirebaseEvent('Button_bottom_sheet');
-                              await showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: Colors.transparent,
-                                enableDrag: false,
-                                context: context,
-                                builder: (context) {
-                                  return GestureDetector(
-                                    onTap: () => FocusScope.of(context)
-                                        .requestFocus(_model.unfocusNode),
-                                    child: Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: NeedToKnowWidget(
-                                        user: widget.storeRef!,
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ).then((value) => setState(() {}));
-                            },
-                      text: FFLocalizations.of(context).getText(
-                        'ens81chl' /* Reserve */,
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(0.0),
+                    bottomRight: Radius.circular(0.0),
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0),
+                  ),
+                  child: Container(
+                    width: double.infinity,
+                    height: MediaQuery.sizeOf(context).height * 0.15,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(0.0),
+                        bottomRight: Radius.circular(0.0),
+                        topLeft: Radius.circular(20.0),
+                        topRight: Radius.circular(20.0),
                       ),
-                      options: FFButtonOptions(
-                        width: double.infinity,
-                        height: double.infinity,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).headlineLarge.override(
-                                  fontFamily: 'Open Sans',
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
+                    ),
+                    child: Align(
+                      alignment: AlignmentDirectional(0.00, 1.00),
+                      child: FFButtonWidget(
+                        onPressed: widget.storeRef?.bag?.amount == 0
+                            ? null
+                            : () async {
+                                logFirebaseEvent(
+                                    'STORE_INFO_PAGE_RESERVE_BTN_ON_TAP');
+                                logFirebaseEvent('Button_bottom_sheet');
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  enableDrag: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return GestureDetector(
+                                      onTap: () => FocusScope.of(context)
+                                          .requestFocus(_model.unfocusNode),
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: NeedToKnowWidget(
+                                          user: widget.storeRef!,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => setState(() {}));
+                              },
+                        text: FFLocalizations.of(context).getText(
+                          'ens81chl' /* Reserve */,
                         ),
-                        borderRadius: BorderRadius.circular(0.0),
-                        disabledColor: FlutterFlowTheme.of(context).tertiary,
-                        disabledTextColor:
-                            FlutterFlowTheme.of(context).secondaryText,
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: double.infinity,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle: FlutterFlowTheme.of(context)
+                              .headlineLarge
+                              .override(
+                                fontFamily: 'Open Sans',
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                fontWeight: FontWeight.bold,
+                              ),
+                          elevation: 0.0,
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                          ),
+                          borderRadius: BorderRadius.circular(0.0),
+                          disabledColor: FlutterFlowTheme.of(context).tertiary,
+                          disabledTextColor:
+                              FlutterFlowTheme.of(context).secondaryText,
+                        ),
+                        showLoadingIndicator: false,
                       ),
                     ),
                   ),

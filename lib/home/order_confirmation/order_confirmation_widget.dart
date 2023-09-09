@@ -1,9 +1,12 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -25,8 +28,24 @@ class OrderConfirmationWidget extends StatefulWidget {
       _OrderConfirmationWidgetState();
 }
 
-class _OrderConfirmationWidgetState extends State<OrderConfirmationWidget> {
+class _OrderConfirmationWidgetState extends State<OrderConfirmationWidget>
+    with TickerProviderStateMixin {
   late OrderConfirmationModel _model;
+
+  final animationsMap = {
+    'containerOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        ScaleEffect(
+          curve: Curves.bounceOut,
+          delay: 0.ms,
+          duration: 800.ms,
+          begin: Offset(2.0, 2.0),
+          end: Offset(1.0, 1.0),
+        ),
+      ],
+    ),
+  };
 
   @override
   void setState(VoidCallback callback) {
@@ -38,8 +57,6 @@ class _OrderConfirmationWidgetState extends State<OrderConfirmationWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OrderConfirmationModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -54,7 +71,7 @@ class _OrderConfirmationWidgetState extends State<OrderConfirmationWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.00, 0.00),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
         child: Container(
@@ -114,7 +131,7 @@ class _OrderConfirmationWidgetState extends State<OrderConfirmationWidget> {
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).titleLarge.override(
                         fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.bold,
                       ),
                 ),
                 Padding(
@@ -149,17 +166,39 @@ class _OrderConfirmationWidgetState extends State<OrderConfirmationWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 5.0, 0.0, 0.0),
-                            child: Text(
-                              valueOrDefault<String>(
-                                widget.order?.numberOrder?.toString(),
-                                'number',
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyLarge
-                                  .override(
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: FontWeight.w600,
+                            child: RichText(
+                              textScaleFactor:
+                                  MediaQuery.of(context).textScaleFactor,
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: FFLocalizations.of(context).getText(
+                                      'iys9g485' /* # */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Open Sans',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                   ),
+                                  TextSpan(
+                                    text: valueOrDefault<String>(
+                                      widget.order?.numberOrder?.toString(),
+                                      'number',
+                                    ),
+                                    style: TextStyle(),
+                                  )
+                                ],
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'Open Sans',
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
                             ),
                           ),
                         ],
@@ -181,6 +220,8 @@ class _OrderConfirmationWidgetState extends State<OrderConfirmationWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 5.0, 0.0, 0.0),
                             child: RichText(
+                              textScaleFactor:
+                                  MediaQuery.of(context).textScaleFactor,
                               text: TextSpan(
                                 children: [
                                   TextSpan(
@@ -225,7 +266,7 @@ class _OrderConfirmationWidgetState extends State<OrderConfirmationWidget> {
                 Flexible(
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent(
@@ -238,10 +279,9 @@ class _OrderConfirmationWidgetState extends State<OrderConfirmationWidget> {
                         'tjl1tdy5' /* Track Order */,
                       ),
                       options: FFButtonOptions(
-                        width: double.infinity,
-                        height: 50.0,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        height: 60.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            40.0, 0.0, 40.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
@@ -252,19 +292,20 @@ class _OrderConfirmationWidgetState extends State<OrderConfirmationWidget> {
                                       .secondaryBackground,
                                   fontWeight: FontWeight.w600,
                                 ),
-                        elevation: 0.0,
+                        elevation: 2.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
                         ),
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(40.0),
                       ),
+                      showLoadingIndicator: false,
                     ),
                   ),
                 ),
               ],
             ),
           ),
-        ),
+        ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
       ),
     );
   }

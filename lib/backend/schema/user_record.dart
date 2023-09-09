@@ -76,6 +76,21 @@ class UserRecord extends FirestoreRecord {
   double get wallet => _wallet ?? 0.0;
   bool hasWallet() => _wallet != null;
 
+  // "co2" field.
+  double? _co2;
+  double get co2 => _co2 ?? 0.0;
+  bool hasCo2() => _co2 != null;
+
+  // "food_kg" field.
+  double? _foodKg;
+  double get foodKg => _foodKg ?? 0.0;
+  bool hasFoodKg() => _foodKg != null;
+
+  // "money_saved" field.
+  double? _moneySaved;
+  double get moneySaved => _moneySaved ?? 0.0;
+  bool hasMoneySaved() => _moneySaved != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -89,6 +104,9 @@ class UserRecord extends FirestoreRecord {
     _ui = snapshotData['UI'] as bool?;
     _phoneNumber = snapshotData['phone_number'] as String?;
     _wallet = castToType<double>(snapshotData['wallet']);
+    _co2 = castToType<double>(snapshotData['co2']);
+    _foodKg = castToType<double>(snapshotData['food_kg']);
+    _moneySaved = castToType<double>(snapshotData['money_saved']);
   }
 
   static CollectionReference get collection =>
@@ -137,6 +155,9 @@ Map<String, dynamic> createUserRecordData({
   bool? ui,
   String? phoneNumber,
   double? wallet,
+  double? co2,
+  double? foodKg,
+  double? moneySaved,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -152,6 +173,9 @@ Map<String, dynamic> createUserRecordData({
       'UI': ui,
       'phone_number': phoneNumber,
       'wallet': wallet,
+      'co2': co2,
+      'food_kg': foodKg,
+      'money_saved': moneySaved,
     }.withoutNulls,
   );
 
@@ -174,7 +198,10 @@ class UserRecordDocumentEquality implements Equality<UserRecord> {
         e1?.storeRef == e2?.storeRef &&
         e1?.ui == e2?.ui &&
         e1?.phoneNumber == e2?.phoneNumber &&
-        e1?.wallet == e2?.wallet;
+        e1?.wallet == e2?.wallet &&
+        e1?.co2 == e2?.co2 &&
+        e1?.foodKg == e2?.foodKg &&
+        e1?.moneySaved == e2?.moneySaved;
   }
 
   @override
@@ -190,7 +217,10 @@ class UserRecordDocumentEquality implements Equality<UserRecord> {
         e?.storeRef,
         e?.ui,
         e?.phoneNumber,
-        e?.wallet
+        e?.wallet,
+        e?.co2,
+        e?.foodKg,
+        e?.moneySaved
       ]);
 
   @override

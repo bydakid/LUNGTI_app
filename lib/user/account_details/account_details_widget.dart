@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_language_selector.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,7 +29,6 @@ class _AccountDetailsWidgetState extends State<AccountDetailsWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'Account_details'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -96,35 +96,63 @@ class _AccountDetailsWidgetState extends State<AccountDetailsWidget> {
                       ],
                     ),
                   ),
+                  Align(
+                    alignment: AlignmentDirectional(-1.00, 0.00),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 0.0, 10.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'n85yocq9' /* Email */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodySmall,
+                      ),
+                    ),
+                  ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
-                    child: Container(
-                      width: double.infinity,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'rb01rupb' /* Email */,
-                              ),
-                              style: FlutterFlowTheme.of(context).bodyMedium,
-                            ),
-                            Text(
-                              currentUserEmail,
-                              style: FlutterFlowTheme.of(context).labelSmall,
-                            ),
-                          ],
+                      child: Container(
+                        width: double.infinity,
+                        height: 50.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(10.0),
                         ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                currentUserEmail,
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(-1.00, 0.00),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 10.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          '3n81b829' /* Language */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodySmall,
                       ),
                     ),
                   ),
@@ -152,7 +180,7 @@ class _AccountDetailsWidgetState extends State<AccountDetailsWidget> {
                 ],
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.00, 1.00),
                 child: Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
@@ -170,33 +198,41 @@ class _AccountDetailsWidgetState extends State<AccountDetailsWidget> {
 
                       context.pushNamed('Login');
                     },
-                    child: Container(
-                      width: double.infinity,
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'fw6c6ek8' /* DELETE ACCOUNT */,
+                      child: Container(
+                        width: double.infinity,
+                        height: 60.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'fw6c6ek8' /* DELETE ACCOUNT */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'Open Sans',
+                                      color: FlutterFlowTheme.of(context).error,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                               ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyLarge
-                                  .override(
-                                    fontFamily: 'Open Sans',
-                                    color: FlutterFlowTheme.of(context).error,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),

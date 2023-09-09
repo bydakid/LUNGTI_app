@@ -3,7 +3,6 @@ export '/home/home/home_widget.dart' show HomeWidget;
 export '/user/profiel/profiel_widget.dart' show ProfielWidget;
 export '/home/map/map_widget.dart' show MapWidget;
 export '/user/login/login/login_widget.dart' show LoginWidget;
-export '/user/login/login_email/login_email_widget.dart' show LoginEmailWidget;
 export '/user/login/login_country/login_country_widget.dart'
     show LoginCountryWidget;
 export '/user/login/info/info_widget.dart' show InfoWidget;

@@ -1,2 +1,3 @@
-NSCameraUsageDescription = "Untuk mengambil gambar atau video, apl ini memerlukan kebenaran untuk mengakses kamera.";
+NSLocationWhenInUseUsageDescription = "Untuk mencari kedai berdekatan, apl ini memerlukan akses ke lokasi semasa anda.";
+NSCameraUsageDescription = "Untuk mengambil gambar atau video, aplikasi ini memerlukan kebenaran untuk mengakses kamera.";
 PermissionGroupNotification = "Dapatkan pemberitahuan tentang ketersediaan, kemas kini ciri, promosi dan banyak lagi.";

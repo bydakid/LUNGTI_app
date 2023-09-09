@@ -18,6 +18,9 @@ class BagStruct extends FFFirebaseStruct {
     int? amount,
     int? sold,
     int? priceInt,
+    double? co2,
+    double? moneySaved,
+    double? foodWeight,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _description = description,
         _active = active,
@@ -28,6 +31,9 @@ class BagStruct extends FFFirebaseStruct {
         _amount = amount,
         _sold = sold,
         _priceInt = priceInt,
+        _co2 = co2,
+        _moneySaved = moneySaved,
+        _foodWeight = foodWeight,
         super(firestoreUtilData);
 
   // "description" field.
@@ -87,6 +93,27 @@ class BagStruct extends FFFirebaseStruct {
   void incrementPriceInt(int amount) => _priceInt = priceInt + amount;
   bool hasPriceInt() => _priceInt != null;
 
+  // "co2" field.
+  double? _co2;
+  double get co2 => _co2 ?? 0.0;
+  set co2(double? val) => _co2 = val;
+  void incrementCo2(double amount) => _co2 = co2 + amount;
+  bool hasCo2() => _co2 != null;
+
+  // "money_saved" field.
+  double? _moneySaved;
+  double get moneySaved => _moneySaved ?? 0.0;
+  set moneySaved(double? val) => _moneySaved = val;
+  void incrementMoneySaved(double amount) => _moneySaved = moneySaved + amount;
+  bool hasMoneySaved() => _moneySaved != null;
+
+  // "food_weight" field.
+  double? _foodWeight;
+  double get foodWeight => _foodWeight ?? 0.0;
+  set foodWeight(double? val) => _foodWeight = val;
+  void incrementFoodWeight(double amount) => _foodWeight = foodWeight + amount;
+  bool hasFoodWeight() => _foodWeight != null;
+
   static BagStruct fromMap(Map<String, dynamic> data) => BagStruct(
         description: data['description'] as String?,
         active: data['active'] as bool?,
@@ -97,6 +124,9 @@ class BagStruct extends FFFirebaseStruct {
         amount: castToType<int>(data['amount']),
         sold: castToType<int>(data['sold']),
         priceInt: castToType<int>(data['price_int']),
+        co2: castToType<double>(data['co2']),
+        moneySaved: castToType<double>(data['money_saved']),
+        foodWeight: castToType<double>(data['food_weight']),
       );
 
   static BagStruct? maybeFromMap(dynamic data) =>
@@ -112,6 +142,9 @@ class BagStruct extends FFFirebaseStruct {
         'amount': _amount,
         'sold': _sold,
         'price_int': _priceInt,
+        'co2': _co2,
+        'money_saved': _moneySaved,
+        'food_weight': _foodWeight,
       }.withoutNulls;
 
   @override
@@ -151,6 +184,18 @@ class BagStruct extends FFFirebaseStruct {
         'price_int': serializeParam(
           _priceInt,
           ParamType.int,
+        ),
+        'co2': serializeParam(
+          _co2,
+          ParamType.double,
+        ),
+        'money_saved': serializeParam(
+          _moneySaved,
+          ParamType.double,
+        ),
+        'food_weight': serializeParam(
+          _foodWeight,
+          ParamType.double,
         ),
       }.withoutNulls;
 
@@ -200,6 +245,21 @@ class BagStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        co2: deserializeParam(
+          data['co2'],
+          ParamType.double,
+          false,
+        ),
+        moneySaved: deserializeParam(
+          data['money_saved'],
+          ParamType.double,
+          false,
+        ),
+        foodWeight: deserializeParam(
+          data['food_weight'],
+          ParamType.double,
+          false,
+        ),
       );
 
   @override
@@ -216,7 +276,10 @@ class BagStruct extends FFFirebaseStruct {
         timeEnd == other.timeEnd &&
         amount == other.amount &&
         sold == other.sold &&
-        priceInt == other.priceInt;
+        priceInt == other.priceInt &&
+        co2 == other.co2 &&
+        moneySaved == other.moneySaved &&
+        foodWeight == other.foodWeight;
   }
 
   @override
@@ -229,7 +292,10 @@ class BagStruct extends FFFirebaseStruct {
         timeEnd,
         amount,
         sold,
-        priceInt
+        priceInt,
+        co2,
+        moneySaved,
+        foodWeight
       ]);
 }
 
@@ -243,6 +309,9 @@ BagStruct createBagStruct({
   int? amount,
   int? sold,
   int? priceInt,
+  double? co2,
+  double? moneySaved,
+  double? foodWeight,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -258,6 +327,9 @@ BagStruct createBagStruct({
       amount: amount,
       sold: sold,
       priceInt: priceInt,
+      co2: co2,
+      moneySaved: moneySaved,
+      foodWeight: foodWeight,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -28,7 +29,6 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'order_collected'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -61,28 +61,36 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                       context: context,
                       desktop: false,
                     ))
-                      ClipOval(
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 0.6,
-                          height: MediaQuery.sizeOf(context).width * 0.6,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: Image.asset(
-                                'assets/images/Pngtreefloating_yellow_green_leaves_material_4041139.png',
-                              ).image,
-                            ),
-                            shape: BoxShape.circle,
-                          ),
-                          child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(0.0),
-                              child: Image.asset(
-                                'assets/images/Portrait.mightguy.webp',
-                                width: MediaQuery.sizeOf(context).width * 0.6,
-                                height: MediaQuery.sizeOf(context).height * 0.6,
+                      Material(
+                        color: Colors.transparent,
+                        elevation: 2.0,
+                        shape: const CircleBorder(),
+                        child: ClipOval(
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 0.6,
+                            height: MediaQuery.sizeOf(context).width * 0.6,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              image: DecorationImage(
                                 fit: BoxFit.cover,
+                                image: Image.asset(
+                                  'assets/images/Pngtreefloating_yellow_green_leaves_material_4041139.png',
+                                ).image,
+                              ),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Align(
+                              alignment: AlignmentDirectional(0.00, 0.00),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(0.0),
+                                child: Image.asset(
+                                  'assets/images/Portrait.mightguy.webp',
+                                  width: MediaQuery.sizeOf(context).width * 0.6,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.6,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
@@ -133,7 +141,7 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                     ),
                     Flexible(
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.00, 0.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 20.0),
@@ -155,7 +163,7 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                                 },
                                 child: Material(
                                   color: Colors.transparent,
-                                  elevation: 1.0,
+                                  elevation: 2.0,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
@@ -168,7 +176,8 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
                                     child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: FaIcon(
                                         FontAwesomeIcons.facebookF,
                                         color: FlutterFlowTheme.of(context)
@@ -189,11 +198,11 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                                       'ORDER_COLLECTED_Container_3f1mq6zt_ON_TA');
                                   logFirebaseEvent('Container_launch_u_r_l');
                                   await launchURL(
-                                      'https://www.instagram.com/lungtifood/');
+                                      'https://www.instagram.com/lungtiapp/');
                                 },
                                 child: Material(
                                   color: Colors.transparent,
-                                  elevation: 1.0,
+                                  elevation: 2.0,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
@@ -206,7 +215,8 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
                                     child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: FaIcon(
                                         FontAwesomeIcons.instagram,
                                         color: FlutterFlowTheme.of(context)
@@ -230,7 +240,7 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                                 },
                                 child: Material(
                                   color: Colors.transparent,
-                                  elevation: 1.0,
+                                  elevation: 2.0,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10.0),
                                   ),
@@ -243,7 +253,8 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
                                     child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment:
+                                          AlignmentDirectional(0.00, 0.00),
                                       child: FaIcon(
                                         FontAwesomeIcons.chrome,
                                         color: FlutterFlowTheme.of(context)
@@ -265,14 +276,14 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                                         'ORDER_COLLECTED_Container_v54bhxmc_ON_TA');
                                     logFirebaseEvent('Container_share');
                                     await Share.share(
-                                      'https://lungti.app',
+                                      'https://onelink.to/52bgvv',
                                       sharePositionOrigin:
                                           getWidgetBoundingBox(context),
                                     );
                                   },
                                   child: Material(
                                     color: Colors.transparent,
-                                    elevation: 1.0,
+                                    elevation: 2.0,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10.0),
                                     ),
@@ -287,7 +298,7 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.00, 0.00),
                                         child: Icon(
                                           Icons.ios_share_rounded,
                                           color: FlutterFlowTheme.of(context)
@@ -308,7 +319,7 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(1.0, -1.0),
+                alignment: AlignmentDirectional(1.00, -1.00),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 20.0, 0.0),
                   child: InkWell(
@@ -325,7 +336,7 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                     },
                     child: Material(
                       color: Colors.transparent,
-                      elevation: 1.0,
+                      elevation: 2.0,
                       shape: const CircleBorder(),
                       child: Container(
                         width: 40.0,
@@ -336,7 +347,7 @@ class _OrderCollectedWidgetState extends State<OrderCollectedWidget> {
                           shape: BoxShape.circle,
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.00, 0.00),
                           child: Icon(
                             Icons.close_rounded,
                             color: FlutterFlowTheme.of(context).primaryText,

@@ -29,7 +29,6 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'Forgot_password'});
     _model.emailLoginController ??= TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -102,52 +101,82 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                   style: FlutterFlowTheme.of(context).bodyMedium,
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
-                child: TextFormField(
-                  controller: _model.emailLoginController,
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    labelText: FFLocalizations.of(context).getText(
-                      '96fhtq1p' /* Email */,
+              Align(
+                alignment: AlignmentDirectional(-1.00, 0.00),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 10.0),
+                  child: Text(
+                    FFLocalizations.of(context).getText(
+                      '9mshtonn' /* Email */,
                     ),
-                    labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-                    hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0x00000000),
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0x00000000),
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).error,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).error,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    filled: true,
-                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                    style: FlutterFlowTheme.of(context).bodySmall,
                   ),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
-                  keyboardType: TextInputType.emailAddress,
-                  validator:
-                      _model.emailLoginControllerValidator.asValidator(context),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 40.0),
+                child: Material(
+                  color: Colors.transparent,
+                  elevation: 2.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: Container(
+                      height: 50.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: TextFormField(
+                        controller: _model.emailLoginController,
+                        obscureText: false,
+                        decoration: InputDecoration(
+                          labelText: FFLocalizations.of(context).getText(
+                            '96fhtq1p' /* Email */,
+                          ),
+                          labelStyle: FlutterFlowTheme.of(context).bodyMedium,
+                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).error,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          filled: true,
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: _model.emailLoginControllerValidator
+                            .asValidator(context),
+                      ),
+                    ),
+                  ),
                 ),
               ),
               Padding(
@@ -179,24 +208,24 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                     'hqlfguol' /* Continue */,
                   ),
                   options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 50.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    height: 60.0,
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).bodyLarge.override(
                           fontFamily: 'Open Sans',
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                          color: FlutterFlowTheme.of(context).primaryBackground,
                           fontWeight: FontWeight.w600,
                         ),
-                    elevation: 0.0,
+                    elevation: 2.0,
                     borderSide: BorderSide(
                       color: Colors.transparent,
                     ),
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(40.0),
                   ),
+                  showLoadingIndicator: false,
                 ),
               ),
             ],

@@ -32,7 +32,6 @@ class _OrdersWidgetState extends State<OrdersWidget> {
     _model = createModel(context, () => OrdersModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Orders'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -293,6 +292,8 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 10.0, 0.0, 0.0),
                                       child: RichText(
+                                        textScaleFactor: MediaQuery.of(context)
+                                            .textScaleFactor,
                                         text: TextSpan(
                                           children: [
                                             TextSpan(
@@ -303,9 +304,18 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                                               style: TextStyle(),
                                             ),
                                             TextSpan(
-                                              text: columnOrdersRecord
-                                                  .numberOrder
-                                                  .toString(),
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'cu5ivsnl' /* # */,
+                                              ),
+                                              style: TextStyle(),
+                                            ),
+                                            TextSpan(
+                                              text: valueOrDefault<String>(
+                                                columnOrdersRecord.numberOrder
+                                                    .toString(),
+                                                '0',
+                                              ),
                                               style: TextStyle(),
                                             )
                                           ],
@@ -322,6 +332,8 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 5.0, 0.0, 5.0),
                                       child: RichText(
+                                        textScaleFactor: MediaQuery.of(context)
+                                            .textScaleFactor,
                                         text: TextSpan(
                                           children: [
                                             TextSpan(
@@ -477,11 +489,11 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                                                               'Open Sans',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryBackground,
+                                                              .secondaryBackground,
                                                           fontWeight:
                                                               FontWeight.w600,
                                                         ),
-                                                elevation: 1.0,
+                                                elevation: 2.0,
                                                 borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
@@ -489,6 +501,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(20.0),
                                               ),
+                                              showLoadingIndicator: false,
                                             ),
                                           ],
                                         ),
@@ -514,9 +527,9 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 40.0),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(0.0),
+                        borderRadius: BorderRadius.circular(100.0),
                         child: Image.asset(
-                          'assets/images/02BF348F-FB13-475C-82B4-9097029426EA.png',
+                          'assets/images/Portrait.mightguy.webp',
                           height: MediaQuery.sizeOf(context).height * 0.2,
                           fit: BoxFit.cover,
                         ),

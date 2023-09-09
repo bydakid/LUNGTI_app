@@ -1,2 +1,3 @@
+NSLocationWhenInUseUsageDescription = "为了搜索附近的商店，此应用程序需要访问您当前的位置。";
 NSCameraUsageDescription = "为了拍摄照片或视频，此应用程序需要访问相机的权限。";
 PermissionGroupNotification = "获取有关可用性、功能更新、促销等信息的通知。";

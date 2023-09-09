@@ -29,7 +29,6 @@ class _InfoWidgetState extends State<InfoWidget> {
     _model = createModel(context, () => InfoModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Info'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -53,7 +52,7 @@ class _InfoWidgetState extends State<InfoWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.00, -1.00),
                 child: Container(
                   width: double.infinity,
                   height: MediaQuery.sizeOf(context).height * 1.0,
@@ -193,7 +192,7 @@ class _InfoWidgetState extends State<InfoWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.00, 1.00),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 100.0),
@@ -230,7 +229,7 @@ class _InfoWidgetState extends State<InfoWidget> {
               ),
               if (_model.pageViewCurrentIndex == 2)
                 Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.00, 1.00),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
@@ -245,10 +244,9 @@ class _InfoWidgetState extends State<InfoWidget> {
                         '6yk579dc' /* Continue */,
                       ),
                       options: FFButtonOptions(
-                        width: MediaQuery.sizeOf(context).width * 0.8,
-                        height: 50.0,
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        height: 60.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            40.0, 0.0, 40.0, 0.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
@@ -256,14 +254,14 @@ class _InfoWidgetState extends State<InfoWidget> {
                             FlutterFlowTheme.of(context).bodyLarge.override(
                                   fontFamily: 'Open Sans',
                                   color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                      .primaryBackground,
                                   fontWeight: FontWeight.w600,
                                 ),
-                        elevation: 0.0,
+                        elevation: 2.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
                         ),
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(40.0),
                       ),
                     ),
                   ),

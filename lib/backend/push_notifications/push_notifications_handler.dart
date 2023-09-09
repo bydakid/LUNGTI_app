@@ -78,15 +78,13 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
 
   @override
   Widget build(BuildContext context) => _loading
-      ? isWeb
-          ? Container()
-          : Container(
-              color: FlutterFlowTheme.of(context).primaryBackground,
-              child: Image.asset(
-                'assets/images/titel_green_text.png',
-                fit: BoxFit.contain,
-              ),
-            )
+      ? Container(
+          color: FlutterFlowTheme.of(context).primaryText,
+          child: Image.asset(
+            'assets/images/titel_white_text.png',
+            fit: BoxFit.contain,
+          ),
+        )
       : widget.child;
 }
 
@@ -111,12 +109,7 @@ class ParameterData {
 
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
-  'home': (data) async => ParameterData(
-        allParams: {
-          'store': await getDocumentParameter<StoreRecord>(
-              data, 'store', StoreRecord.fromSnapshot),
-        },
-      ),
+  'home': ParameterData.none(),
   'Profiel': ParameterData.none(),
   'Map': (data) async => ParameterData(
         allParams: {
@@ -125,7 +118,6 @@ final parametersBuilderMap =
         },
       ),
   'Login': ParameterData.none(),
-  'Login_email': ParameterData.none(),
   'Login_Country': ParameterData.none(),
   'Info': ParameterData.none(),
   'Email_check': ParameterData.none(),

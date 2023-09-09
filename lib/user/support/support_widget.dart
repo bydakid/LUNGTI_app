@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,7 +29,6 @@ class _SupportWidgetState extends State<SupportWidget> {
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Support'});
     _model.textController ??= TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -93,56 +93,64 @@ class _SupportWidgetState extends State<SupportWidget> {
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).primaryText,
+                child: Material(
+                  color: Colors.transparent,
+                  elevation: 2.0,
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 10.0),
-                          child: Text(
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          10.0, 10.0, 10.0, 10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 10.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'tbz5qoqg' /* Got a question or an issue? */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .labelLarge
+                                  .override(
+                                    fontFamily: 'Open Sans',
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBackground,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                          ),
+                          Text(
                             FFLocalizations.of(context).getText(
-                              'tbz5qoqg' /* Got a question or an issue? */,
+                              'aa0dax0o' /* If you are having an issue or ... */,
                             ),
                             style: FlutterFlowTheme.of(context)
-                                .labelLarge
+                                .labelMedium
                                 .override(
                                   fontFamily: 'Open Sans',
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
-                                  fontWeight: FontWeight.w600,
                                 ),
                           ),
-                        ),
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            'aa0dax0o' /* If you are having an issue or ... */,
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Open Sans',
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
-                                  ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-1.0, 0.0),
+                alignment: AlignmentDirectional(-1.00, 0.00),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 10.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 10.0),
                   child: Text(
                     FFLocalizations.of(context).getText(
                       'j4yr6isx' /* Message */,
@@ -158,6 +166,11 @@ class _SupportWidgetState extends State<SupportWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                 child: TextFormField(
                   controller: _model.textController,
+                  onChanged: (_) => EasyDebounce.debounce(
+                    '_model.textController',
+                    Duration(milliseconds: 2000),
+                    () => setState(() {}),
+                  ),
                   autofocus: true,
                   obscureText: false,
                   decoration: InputDecoration(
@@ -193,6 +206,8 @@ class _SupportWidgetState extends State<SupportWidget> {
                       ),
                       borderRadius: BorderRadius.circular(8.0),
                     ),
+                    filled: true,
+                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium,
                   maxLines: 5,
@@ -203,43 +218,49 @@ class _SupportWidgetState extends State<SupportWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
                 child: FFButtonWidget(
-                  onPressed: () async {
-                    logFirebaseEvent('SUPPORT_PAGE_SEND_BTN_ON_TAP');
-                    logFirebaseEvent('Button_send_email');
-                    await launchUrl(Uri(
-                        scheme: 'mailto',
-                        path: 'info@lungti.com',
-                        query: {
-                          'subject': 'Customer Support',
-                          'body': _model.textController.text,
-                        }
-                            .entries
-                            .map((MapEntry<String, String> e) =>
-                                '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
-                            .join('&')));
-                  },
+                  onPressed: _model.textController.text == null ||
+                          _model.textController.text == ''
+                      ? null
+                      : () async {
+                          logFirebaseEvent('SUPPORT_PAGE_SEND_BTN_ON_TAP');
+                          logFirebaseEvent('Button_send_email');
+                          await launchUrl(Uri(
+                              scheme: 'mailto',
+                              path: 'support@lungti.com',
+                              query: {
+                                'subject': 'Customer Support',
+                                'body': _model.textController.text,
+                              }
+                                  .entries
+                                  .map((MapEntry<String, String> e) =>
+                                      '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                                  .join('&')));
+                        },
                   text: FFLocalizations.of(context).getText(
                     '5m6nm15j' /* Send */,
                   ),
                   options: FFButtonOptions(
-                    width: double.infinity,
                     height: 50.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).bodyLarge.override(
                           fontFamily: 'Open Sans',
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                          color: FlutterFlowTheme.of(context).primaryBackground,
                           fontWeight: FontWeight.w600,
                         ),
                     elevation: 0.0,
                     borderSide: BorderSide(
                       color: Colors.transparent,
                     ),
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(40.0),
+                    disabledColor: FlutterFlowTheme.of(context).tertiary,
+                    disabledTextColor:
+                        FlutterFlowTheme.of(context).secondaryText,
                   ),
+                  showLoadingIndicator: false,
                 ),
               ),
             ],

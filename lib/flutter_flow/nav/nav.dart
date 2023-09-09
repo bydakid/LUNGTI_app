@@ -92,14 +92,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'home',
           path: '/home',
-          asyncParams: {
-            'store': getDoc(['store'], StoreRecord.fromSnapshot),
-          },
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'home')
-              : HomeWidget(
-                  store: params.getParam('store', ParamType.Document),
-                ),
+          builder: (context, params) =>
+              params.isEmpty ? NavBarPage(initialPage: 'home') : HomeWidget(),
         ),
         FFRoute(
           name: 'Profiel',
@@ -127,11 +121,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Login',
           path: '/login',
           builder: (context, params) => LoginWidget(),
-        ),
-        FFRoute(
-          name: 'Login_email',
-          path: '/loginEmail',
-          builder: (context, params) => LoginEmailWidget(),
         ),
         FFRoute(
           name: 'Login_Country',
@@ -384,15 +373,13 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? isWeb
-                  ? Container()
-                  : Container(
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      child: Image.asset(
-                        'assets/images/titel_green_text.png',
-                        fit: BoxFit.contain,
-                      ),
-                    )
+              ? Container(
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  child: Image.asset(
+                    'assets/images/titel_white_text.png',
+                    fit: BoxFit.contain,
+                  ),
+                )
               : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;

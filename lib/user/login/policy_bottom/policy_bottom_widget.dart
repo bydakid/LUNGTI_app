@@ -29,8 +29,6 @@ class _PolicyBottomWidgetState extends State<PolicyBottomWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PolicyBottomModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -45,7 +43,7 @@ class _PolicyBottomWidgetState extends State<PolicyBottomWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: AlignmentDirectional(0.00, 0.00),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
         child: Container(
@@ -61,33 +59,14 @@ class _PolicyBottomWidgetState extends State<PolicyBottomWidget> {
             ],
             borderRadius: BorderRadius.circular(10.0),
           ),
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Align(
-                  alignment: AlignmentDirectional(1.0, -1.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      logFirebaseEvent(
-                          'POLICY_BOTTOM_COMP_Icon_hgplwabz_ON_TAP');
-                      logFirebaseEvent('Icon_bottom_sheet');
-                      Navigator.pop(context);
-                    },
-                    child: Icon(
-                      Icons.close_rounded,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 25.0,
-                    ),
-                  ),
-                ),
-                Flexible(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Flexible(
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -121,29 +100,32 @@ class _PolicyBottomWidgetState extends State<PolicyBottomWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             logFirebaseEvent(
-                                'POLICY_BOTTOM_RichText_otlc3xxm_ON_TAP');
+                                'POLICY_BOTTOM_RichText_spmzxa1v_ON_TAP');
                             logFirebaseEvent('RichText_launch_u_r_l');
                             await launchURL(
-                                'https://lungti.com/termsconditions.html');
+                                'https://www.lungti.com/terms-of-service');
                           },
                           child: RichText(
+                            textScaleFactor:
+                                MediaQuery.of(context).textScaleFactor,
                             text: TextSpan(
                               children: [
                                 TextSpan(
                                   text: FFLocalizations.of(context).getText(
-                                    'ewesi2ar' /* I accept the  */,
+                                    'kh1swl77' /* I accept the  */,
                                   ),
                                   style: FlutterFlowTheme.of(context).bodySmall,
                                 ),
                                 TextSpan(
                                   text: FFLocalizations.of(context).getText(
-                                    'baohpjid' /* Terms & Conditions. */,
+                                    '635dv1bb' /* Terms & Conditions. */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .labelSmall
                                       .override(
                                         fontFamily: 'Open Sans',
-                                        fontStyle: FontStyle.italic,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                       ),
                                 )
                               ],
@@ -155,126 +137,125 @@ class _PolicyBottomWidgetState extends State<PolicyBottomWidget> {
                     ],
                   ),
                 ),
-                Flexible(
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Theme(
-                          data: ThemeData(
-                            checkboxTheme: CheckboxThemeData(
-                              visualDensity: VisualDensity.compact,
-                              materialTapTargetSize:
-                                  MaterialTapTargetSize.shrinkWrap,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                            ),
-                            unselectedWidgetColor:
-                                FlutterFlowTheme.of(context).secondaryText,
-                          ),
-                          child: Checkbox(
-                            value: _model.checkboxValue2 ??= true,
-                            onChanged: (newValue) async {
-                              setState(() => _model.checkboxValue2 = newValue!);
-                            },
-                            activeColor: FlutterFlowTheme.of(context).primary,
-                          ),
-                        ),
-                        Flexible(
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              logFirebaseEvent(
-                                  'POLICY_BOTTOM_RichText_i0gsj34m_ON_TAP');
-                              logFirebaseEvent('RichText_launch_u_r_l');
-                              await launchURL(
-                                  'https://lungti.com/privacypolicy.html');
-                            },
-                            child: RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '7c5wxbr2' /* I accept the  */,
-                                    ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodySmall,
-                                  ),
-                                  TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'va9axx89' /* Privacy Pocily. */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .labelSmall
-                                        .override(
-                                          fontFamily: 'Open Sans',
-                                          fontStyle: FontStyle.italic,
-                                        ),
-                                  )
-                                ],
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                              ),
+              ),
+              Flexible(
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 5.0, 20.0, 5.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Theme(
+                        data: ThemeData(
+                          checkboxTheme: CheckboxThemeData(
+                            visualDensity: VisualDensity.compact,
+                            materialTapTargetSize:
+                                MaterialTapTargetSize.shrinkWrap,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
                             ),
                           ),
+                          unselectedWidgetColor:
+                              FlutterFlowTheme.of(context).secondaryText,
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-                Divider(
-                  thickness: 1.0,
-                  color: FlutterFlowTheme.of(context).primaryBackground,
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
-                  child: FFButtonWidget(
-                    onPressed:
-                        !(_model.checkboxValue1! && _model.checkboxValue2!)
-                            ? null
-                            : () async {
-                                logFirebaseEvent(
-                                    'POLICY_BOTTOM_COMP_CONTINUE_BTN_ON_TAP');
-                                logFirebaseEvent('Button_navigate_to');
-
-                                context.pushNamed('Login_email');
-                              },
-                    text: FFLocalizations.of(context).getText(
-                      'gqkzxeds' /* Continue */,
-                    ),
-                    options: FFButtonOptions(
-                      width: MediaQuery.sizeOf(context).width * 0.8,
-                      height: 50.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).bodyLarge.override(
-                                fontFamily: 'Open Sans',
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                fontWeight: FontWeight.w600,
-                              ),
-                      elevation: 0.0,
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
+                        child: Checkbox(
+                          value: _model.checkboxValue2 ??= true,
+                          onChanged: (newValue) async {
+                            setState(() => _model.checkboxValue2 = newValue!);
+                          },
+                          activeColor: FlutterFlowTheme.of(context).primary,
+                        ),
                       ),
-                      borderRadius: BorderRadius.circular(10.0),
-                      disabledColor: FlutterFlowTheme.of(context).tertiary,
-                      disabledTextColor:
-                          FlutterFlowTheme.of(context).secondaryText,
-                    ),
+                      Flexible(
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent(
+                                'POLICY_BOTTOM_RichText_v7fsppen_ON_TAP');
+                            logFirebaseEvent('RichText_launch_u_r_l');
+                            await launchURL(
+                                'https://www.lungti.com/privacy-policy');
+                          },
+                          child: RichText(
+                            textScaleFactor:
+                                MediaQuery.of(context).textScaleFactor,
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: FFLocalizations.of(context).getText(
+                                    '1hgkml4l' /* I accept the  */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context).bodySmall,
+                                ),
+                                TextSpan(
+                                  text: FFLocalizations.of(context).getText(
+                                    '7h6c7owh' /* Privacy Pocily. */,
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelSmall
+                                      .override(
+                                        fontFamily: 'Open Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                )
+                              ],
+                              style: FlutterFlowTheme.of(context).bodyMedium,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+              Divider(
+                thickness: 1.0,
+                color: FlutterFlowTheme.of(context).secondaryText,
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
+                child: FFButtonWidget(
+                  onPressed: !(_model.checkboxValue1! && _model.checkboxValue2!)
+                      ? null
+                      : () async {
+                          logFirebaseEvent(
+                              'POLICY_BOTTOM_COMP_CONTINUE_BTN_ON_TAP');
+                          logFirebaseEvent('Button_bottom_sheet');
+                          Navigator.pop(context);
+                        },
+                  text: FFLocalizations.of(context).getText(
+                    'ruyhutj1' /* Continue */,
+                  ),
+                  options: FFButtonOptions(
+                    height: 60.0,
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Open Sans',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          fontWeight: FontWeight.w600,
+                        ),
+                    elevation: 2.0,
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                    ),
+                    borderRadius: BorderRadius.circular(40.0),
+                    disabledColor: FlutterFlowTheme.of(context).tertiary,
+                    disabledTextColor:
+                        FlutterFlowTheme.of(context).secondaryText,
+                  ),
+                  showLoadingIndicator: false,
+                ),
+              ),
+            ],
           ),
         ),
       ),

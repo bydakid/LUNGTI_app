@@ -35,8 +35,6 @@ class _NeedToKnowWidgetState extends State<NeedToKnowWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NeedToKnowModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -126,7 +124,7 @@ class _NeedToKnowWidgetState extends State<NeedToKnowWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0.0, 1.0),
+              alignment: AlignmentDirectional(0.00, 1.00),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: FFButtonWidget(
@@ -152,9 +150,9 @@ class _NeedToKnowWidgetState extends State<NeedToKnowWidget> {
                     '1u5jddul' /* Got it! */,
                   ),
                   options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 50.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    height: 60.0,
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
@@ -164,17 +162,18 @@ class _NeedToKnowWidgetState extends State<NeedToKnowWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                           fontWeight: FontWeight.w600,
                         ),
-                    elevation: 0.0,
+                    elevation: 4.0,
                     borderSide: BorderSide(
                       color: Colors.transparent,
                     ),
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(40.0),
                   ),
+                  showLoadingIndicator: false,
                 ),
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0.0, 1.0),
+              alignment: AlignmentDirectional(0.00, 1.00),
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: FFButtonWidget(
@@ -187,9 +186,9 @@ class _NeedToKnowWidgetState extends State<NeedToKnowWidget> {
                     'jg4smygc' /* Go back */,
                   ),
                   options: FFButtonOptions(
-                    width: double.infinity,
-                    height: 50.0,
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    height: 60.0,
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -202,8 +201,9 @@ class _NeedToKnowWidgetState extends State<NeedToKnowWidget> {
                     borderSide: BorderSide(
                       color: Colors.transparent,
                     ),
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(40.0),
                   ),
+                  showLoadingIndicator: false,
                 ),
               ),
             ),

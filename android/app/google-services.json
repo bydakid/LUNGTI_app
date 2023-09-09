@@ -134,6 +134,66 @@
           }
         },
         {
+          "client_id": "421711802858-llm3csc1ph2ibs2mq1kifulrmeijijav.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lungtibizz.food",
+            "certificate_hash": "b99e85ea565d5e15633cbfe757b76ac9b125ccad"
+          }
+        },
+        {
+          "client_id": "421711802858-qlbaqs581knds56c88js0kr0osis62td.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lungtibizz.food",
+            "certificate_hash": "6ea6ef7540b03638a1b6c9d7ee30c0dfe8518f0b"
+          }
+        },
+        {
+          "client_id": "421711802858-56d43dgp69vtrk8nts00opn2mu085g3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFysFw62gRjkJ6VvjxDDklsfsxyHU6uxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421711802858-56d43dgp69vtrk8nts00opn2mu085g3v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "421711802858-2fhkn6fhf5idc3efuu5kvipfd570b9dp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lungti.food"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421711802858:android:bc044bb3eb58e393100293",
+        "android_client_info": {
+          "package_name": "com.lungtidashboard.food"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421711802858-5nnld00c6r3iv72ipgfkcl7637769mo3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lungtidashboard.food",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
           "client_id": "421711802858-56d43dgp69vtrk8nts00opn2mu085g3v.apps.googleusercontent.com",
           "client_type": 3
         }

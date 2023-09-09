@@ -21,8 +21,12 @@ class PaymentTabModel extends FlutterFlowModel {
 
   // State field(s) for CountController widget.
   int? countControllerValue;
-  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  // Stores action output result for [Backend Call - Create Document] action in php widget.
   OrdersRecord? orderNumber2;
+  // Stores action output result for [Backend Call - Create Document] action in rm widget.
+  OrdersRecord? orderNumberLungti;
+  // Stores action output result for [Backend Call - Create Document] action in sg widget.
+  OrdersRecord? orderNumberSgp1;
   // Stores action output result for [Stripe Payment] action in php widget.
   String? paymentId;
   // Stores action output result for [Backend Call - Create Document] action in php widget.

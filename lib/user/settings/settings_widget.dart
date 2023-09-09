@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,7 +26,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     _model = createModel(context, () => SettingsModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Settings'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -90,48 +90,67 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 10.0),
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    logFirebaseEvent('SETTINGS_PAGE_Row_6sej7ue9_ON_TAP');
-                    logFirebaseEvent('Row_navigate_to');
+                    logFirebaseEvent('SETTINGS_PAGE_Container_86ekcxu1_ON_TAP');
+                    logFirebaseEvent('Container_navigate_to');
 
                     context.pushNamed('Account_details');
                   },
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.location_history,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 25.0,
+                  child: Material(
+                    color: Colors.transparent,
+                    elevation: 2.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Container(
+                      height: 50.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            'g9ldfgrc' /* Account Details */,
-                          ),
-                          style: FlutterFlowTheme.of(context).bodyLarge,
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            20.0, 0.0, 20.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Icon(
+                              Icons.location_history,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 25.0,
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'g9ldfgrc' /* Account Details */,
+                                ),
+                                style: FlutterFlowTheme.of(context).bodyLarge,
+                              ),
+                            ),
+                            Flexible(
+                              child: Align(
+                                alignment: AlignmentDirectional(1.00, 0.00),
+                                child: Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 15.0,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      Flexible(
-                        child: Align(
-                          alignment: AlignmentDirectional(1.0, 0.0),
-                          child: Icon(
-                            Icons.arrow_forward_ios_rounded,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 15.0,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),
