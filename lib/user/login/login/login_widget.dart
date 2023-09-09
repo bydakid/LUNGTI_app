@@ -466,7 +466,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     if (isAndroid)
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            40.0, 0.0, 40.0, 10.0),
+                            40.0, 0.0, 40.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -529,59 +529,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   Text(
                                     FFLocalizations.of(context).getText(
                                       'w2sh7u1r' /* Sign with Google */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .override(
-                                          fontFamily: 'Open Sans',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    if (isAndroid)
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            40.0, 0.0, 40.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            logFirebaseEvent(
-                                'LOGIN_PAGE_Container_f49z8e8o_ON_TAP');
-                            logFirebaseEvent('Container_navigate_to');
-
-                            context.pushNamed('Login_mail');
-                          },
-                          child: Material(
-                            color: Colors.transparent,
-                            elevation: 2.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40.0),
-                            ),
-                            child: Container(
-                              width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 60.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                borderRadius: BorderRadius.circular(40.0),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'f7b9v2li' /* Other */,
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
