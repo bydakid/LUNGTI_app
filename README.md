@@ -1,4 +1,4 @@
-#LUNGTI
+# LUNGTI
 
 ## Food Waste App Project - iOS / Android
 LUNGTI is a mobile application developed to address food waste by providing a platform for businesses to sell their surplus food and enabling consumers to purchase food at discounted prices.
